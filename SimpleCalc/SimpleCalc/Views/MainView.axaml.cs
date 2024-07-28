@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Interactivity;
-using System.Diagnostics;
+using Avalonia.Markup.Xaml;
+
 
 namespace SimpleCalc.Views;
 
@@ -11,12 +11,8 @@ public partial class MainView : UserControl
         InitializeComponent();
     }
 
-    public void ButtonClicked(object source, RoutedEventArgs args)
+    private void InitializeComponent()
     {
-        Debug.WriteLine("Click!");
-    }
-
-    private void Binding(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
+        AvaloniaXamlLoader.Load(this);
     }
 }

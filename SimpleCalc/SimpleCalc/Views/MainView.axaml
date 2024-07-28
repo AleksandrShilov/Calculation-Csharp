@@ -17,115 +17,109 @@
 		<StyleInclude Source="\Styles\Style.axaml"/>
 	</UserControl.Styles>
 
-	<Grid RowDefinitions="auto, auto, *" Classes="MainGrid">
+		<!-- Content -->
+		<Grid Grid.Column="1" RowDefinitions="auto, auto, *" Classes="MainGrid">
 
-		<!--меню калькулятора-->
-		<Menu Grid.Row="0">
-			<MenuItem Header="Режим">
-				<MenuItem Header="Обычный" />
-			</MenuItem>
-		</Menu>
-
-		<!--Импровизированный экран нашего калькулятора-->
-		<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" />
+			<!--Экран калькулятора-->
+			<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" />
 		
-		<!--Клавиши выглядят как сетка(Grid)-->
-		<Grid Grid.Row="2" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
-				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0" >
-					AC
-				</Button>
+			<!--Клавиши выглядят как сетка(Grid)-->
+			<Grid Grid.Row="2" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
+					<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0" >
+						AC
+					</Button>
 			
-				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="1">
-					C
-				</Button>
+					<Button Classes="btnSomon" Grid.Row="0" Grid.Column="1">
+						C
+					</Button>
 
-				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="2">
-					X
-				</Button>
+					<Button Classes="btnSomon" Grid.Row="0" Grid.Column="2">
+						X
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="0" Grid.Column="3">
-					(
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="0" Grid.Column="3">
+						(
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="0" Grid.Column="4">
-					)
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="0" Grid.Column="4">
+						)
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0">
-					7
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0">
+						7
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="1">
-					8
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="1" Grid.Column="1">
+						8
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="2">
-					9
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="1" Grid.Column="2">
+						9
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="1" Grid.Column="3">
-					*
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="1" Grid.Column="3">
+						*
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="1" Grid.Column="4">
-					/
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="1" Grid.Column="4">
+						/
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="0">
-					4
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="2" Grid.Column="0">
+						4
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="1">
-					5
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="2" Grid.Column="1">
+						5
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="2">
-					6
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="2" Grid.Column="2">
+						6
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="2" Grid.Column="3">
-					+
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="2" Grid.Column="3">
+						+
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="2" Grid.Column="4">
-					-
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="2" Grid.Column="4">
+						-
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="0">
-					1
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="3" Grid.Column="0">
+						1
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="1">
-					2
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="3" Grid.Column="1">
+						2
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="2">
-					3
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="3" Grid.Column="2">
+						3
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="3" Grid.Column="3">
-					sqrt
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="3" Grid.Column="3">
+						sqrt
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="3" Grid.Column="4">
-					^
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="3" Grid.Column="4">
+						^
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="100">
-					0
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="100">
+						0
+					</Button>
 
-				<Button Classes="btnGreen" Grid.Row="4" Grid.Column="2">
-					.
-				</Button>
+					<Button Classes="btnGreen" Grid.Row="4" Grid.Column="2">
+						.
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="4" Grid.Column="3">
-					mod
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="4" Grid.Column="3">
+						mod
+					</Button>
 
-				<Button Classes="btnTemp" Grid.Row="4" Grid.Column="4">
-					=
-				</Button>
+					<Button Classes="btnTemp" Grid.Row="4" Grid.Column="4">
+						=
+					</Button>
+			</Grid>
 		</Grid>
-	</Grid>
 </UserControl>
