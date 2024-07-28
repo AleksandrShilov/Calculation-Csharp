@@ -1,2 +1,1 @@
-# Calculation-C-
-Calculation №3 (C#)
+# Calculation-C#
