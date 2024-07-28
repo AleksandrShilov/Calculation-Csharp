@@ -1,0 +1,65 @@
+﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
+
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=netstandard">
+	
+	<Style Selector="TextBox">
+		<Setter Property="Background" Value="#FCF8E8"></Setter>
+	</Style>
+		
+	<Style Selector="Grid.MainGrid">
+		<Setter Property="Margin" Value="1"></Setter>
+		<Setter Property="Background" Value="#FCF8E8"></Setter>
+	</Style>
+
+	<Style Selector="Grid.BtnGrid">
+		<Setter Property="Background" Value="#FCF8E8"></Setter>
+		<Setter Property="Margin" Value="2"></Setter>
+	</Style>
+		
+	<Style Selector="Button">
+		<Setter Property="MinWidth" Value="50"></Setter>
+		<Setter Property="MinHeight" Value="50"></Setter>
+		<Setter Property="Margin" Value="0"></Setter>
+		<Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+		<Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+		<Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+		<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+		<Setter Property="CornerRadius" Value="10"></Setter>
+		<Setter Property="ClipToBounds" Value="True"></Setter>
+	</Style>
+
+	
+	<Style Selector="Button.btnSomon">
+		<Setter Property="Foreground" Value="#FFFFFFFF" />
+		<Setter Property="Background" Value="#ECB390" />
+	</Style>
+
+	<Style Selector="Button.btnTemp">
+		<Setter Property="Foreground" Value="#FFFFFFFF" />
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="Background" Value="#DF7861" />
+	</Style>
+
+	<Style Selector="Button.btnGreen">
+		<Setter Property="Foreground" Value="#FFFFFFFF" />
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="Background" Value="#D4E2D4" />
+	</Style>
+
+	<!--
+
+	<Style Selector="TextBlock">
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Foreground" Value="Black" />
+	</Style>
+
+	<Style Selector="TextBlock.white">
+		<Setter Property="Foreground" Value="White" />
+	</Style>
+	
+	-->
+
+</Styles>
