@@ -6,7 +6,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using SimpleCalc.ViewModels;
 using SimpleCalc.Views;
-using SimpleCalc;
 
 namespace SimpleCalc;
 
@@ -17,7 +16,8 @@ public class ViewLocator : IDataTemplate
     public ViewLocator()
     {
         RegisterViewFactory<MainViewModel, MainWindow>();
-        RegisterViewFactory<HomePageViewModel, HomePageView>();
+        RegisterViewFactory<BaseCalculateViewModel, BaseCalculateView>();
+        RegisterViewFactory<DepositViewModel, DepositView>();
     }
 
     public Control Build(object? data)

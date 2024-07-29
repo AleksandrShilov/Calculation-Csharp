@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
              Background="#FCF8E8"
-			 x:Class="SimpleCalc.HomePageView">
+			 x:Class="SimpleCalc.BaseCalculateView">
 
-
+	<!-- Style -->
 	<UserControl.Styles>
 		<StyleInclude Source="\Styles\Style.axaml"/>
 	</UserControl.Styles>
@@ -14,10 +14,10 @@
 	<!-- Content -->
 	<Grid Grid.Column="1" RowDefinitions="auto, auto, *" Classes="MainGrid">
 
-		<!--Экран калькулятора-->
+		<!-- Display Calc -->
 		<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" />
 
-		<!--Клавиши выглядят как сетка(Grid)-->
+		<!-- Button Grid -->
 		<Grid Grid.Row="2" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
 			<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0" >
 				AC

@@ -5,7 +5,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace SimpleCalc.ViewModels;
 
@@ -16,7 +15,7 @@ public partial class MainViewModel : ViewModelBase
     private bool _isPaneOpen = false;
 
     [ObservableProperty]
-    private ViewModelBase _currentPage = new HomePageViewModel();
+    private ViewModelBase _currentPage = new BaseCalculateViewModel();
 
     [ObservableProperty]
     private ListItemTemplate? _selectedListItem;
@@ -33,7 +32,7 @@ public partial class MainViewModel : ViewModelBase
 
     public ObservableCollection<ListItemTemplate> Items { get; } = new()
     {
-        new ListItemTemplate(typeof(HomePageViewModel), "CalculatorRegular"),
+        new ListItemTemplate(typeof(BaseCalculateViewModel), "CalculatorRegular"),
         new ListItemTemplate(typeof(DepositViewModel), "CurrencyRegular"),
     };
 

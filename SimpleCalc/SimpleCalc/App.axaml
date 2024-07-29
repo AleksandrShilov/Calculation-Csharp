@@ -11,6 +11,6 @@
 	
     <Application.Styles>
         <FluentTheme />
-		<StyleInclude Source="avares://SimpleCalc/Assets/Styles1.axaml" />
+		<StyleInclude Source="avares://SimpleCalc/Assets/Icons.axaml" />
     </Application.Styles>
 </Application>

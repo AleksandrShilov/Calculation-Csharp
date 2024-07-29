@@ -13,7 +13,7 @@
 
   
   <ItemGroup>
-    <AvaloniaXaml Remove="Assets\Styles1.axaml" />
+    <AvaloniaXaml Remove="Assets\Icons.axaml" />
     <AvaloniaXaml Remove="Styles\Style.axaml" />
   </ItemGroup>
 
@@ -26,12 +26,20 @@
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <AvaloniaResource Update="Assets\Styles1.axaml">
+    <AvaloniaResource Update="Assets\Icons.axaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Views\BaseCalculateView.axaml.cs">
+      <DependentUpon>BaseCalculateView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

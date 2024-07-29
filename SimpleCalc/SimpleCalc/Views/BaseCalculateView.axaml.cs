@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace SimpleCalc;
 
-public partial class HomePageView : UserControl
+public partial class BaseCalculateView : UserControl
 {
-    public HomePageView()
+    public BaseCalculateView()
     {
         InitializeComponent();
     }
