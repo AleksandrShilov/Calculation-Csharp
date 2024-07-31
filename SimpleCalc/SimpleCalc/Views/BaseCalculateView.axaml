@@ -15,7 +15,7 @@
 	<Grid Grid.Column="1" RowDefinitions="auto, auto, *" Classes="MainGrid">
 
 		<!-- Display Calc -->
-		<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" />
+		<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" Text="{Binding YourProperty}" />
 
 		<!-- Button Grid -->
 		<Grid Grid.Row="2" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
@@ -39,7 +39,7 @@
 				)
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0">
+			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0" Command="{Binding OnButtonClickedCommand}">
 				7
 			</Button>
 
