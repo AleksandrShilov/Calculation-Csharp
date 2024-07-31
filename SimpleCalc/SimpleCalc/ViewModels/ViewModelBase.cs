@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ReactiveUI;
 
 
 namespace SimpleCalc.ViewModels;
 
-public class ViewModelBase : ObservableObject
-{
-}
+public class ViewModelBase : ReactiveObject { }

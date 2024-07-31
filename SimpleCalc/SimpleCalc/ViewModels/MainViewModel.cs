@@ -11,50 +11,6 @@ namespace SimpleCalc.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private bool _isPaneOpen = false;
-
-    [ObservableProperty]
-    private ViewModelBase _currentPage = new BaseCalculateViewModel();
-
-    [ObservableProperty]
-    private ListItemTemplate? _selectedListItem;
-
-    partial void OnSelectedListItemChanged(ListItemTemplate? value)
-    {
-        if (value is null) return;
-
-        var instance = Activator.CreateInstance(value.ModelType);
-        if (instance is null) return;
-
-        CurrentPage = (ViewModelBase)instance;
-    }
-
-    public ObservableCollection<ListItemTemplate> Items { get; } = new()
-    {
-        new ListItemTemplate(typeof(BaseCalculateViewModel), "CalculatorRegular"),
-        new ListItemTemplate(typeof(DepositViewModel), "CurrencyRegular"),
-    };
-
-    [RelayCommand]
-    private void TriggerPane()
-    {
-        IsPaneOpen = !IsPaneOpen;
-    }
+  
 }
 
-public class ListItemTemplate
-{
-    public ListItemTemplate(Type type, string iconKey)
-    {
-        ModelType = type;
-        Label = type.Name.Replace("PageViewModel", "");
-
-        Application.Current!.TryFindResource(iconKey, out var res);
-        ListItemIcon = (StreamGeometry)res!;
-    }
-
-    public string Label { get; }
-    public Type ModelType { get; }
-    public StreamGeometry ListItemIcon { get; }
-}

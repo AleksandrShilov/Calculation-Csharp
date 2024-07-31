@@ -1,8 +1,7 @@
 
 
-namespace SimpleCalc.ViewModels
+namespace SimpleCalc.ViewModels;
+
+public class DepositViewModel : ViewModelBase
 {
-	public class DepositViewModel : ViewModelBase
-	{
-	}
 }

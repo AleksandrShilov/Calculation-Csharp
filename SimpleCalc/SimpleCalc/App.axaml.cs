@@ -15,13 +15,8 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var locator = new ViewLocator();
-        DataTemplates.Add(locator);
-
-
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            IocSetup.ConfigureServices();
 
             desktop.MainWindow = new MainWindow
             {

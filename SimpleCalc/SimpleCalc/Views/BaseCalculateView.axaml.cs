@@ -1,8 +1,9 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+using Avalonia.Interactivity;
+using System.Diagnostics;
 
-namespace SimpleCalc;
+
+namespace SimpleCalc.Views;
 
 public partial class BaseCalculateView : UserControl
 {
