@@ -25,11 +25,11 @@
 
 		<!-- Button Grid -->
 		<Grid Grid.Row="2" RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
-			<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0" >
+			<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0" Command="{Binding RemoveAllStr}">
 				AC
 			</Button>
 
-			<Button Classes="btnSomon" Grid.Row="0" Grid.Column="1">
+			<Button Classes="btnSomon" Grid.Row="0" Grid.Column="1" Command="{Binding RemoveLastCharCommand}">
 				C
 			</Button>
 
@@ -37,86 +37,83 @@
 				X
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="0" Grid.Column="3">
+			<Button Classes="btnTemp" Grid.Row="0" Grid.Column="3" Command="{Binding AddNumberCommand}" CommandParameter="(">
 				(
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="0" Grid.Column="4">
+			<Button Classes="btnTemp" Grid.Row="0" Grid.Column="4" Command="{Binding AddNumberCommand}" CommandParameter=")">
 				)
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0">
+			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0" Command="{Binding AddNumberCommand}" CommandParameter="7">
 				7
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="1">
+			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="1" Command="{Binding AddNumberCommand}" CommandParameter="8">
 				8
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="2">
+			<Button Classes="btnGreen" Grid.Row="1" Grid.Column="2" Command="{Binding AddNumberCommand}" CommandParameter="9">
 				9
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="1" Grid.Column="3">
+			<Button Classes="btnTemp" Grid.Row="1" Grid.Column="3" Command="{Binding AddNumberCommand}" CommandParameter="*">
 				*
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="1" Grid.Column="4">
+			<Button Classes="btnTemp" Grid.Row="1" Grid.Column="4" Command="{Binding AddNumberCommand}" CommandParameter="/">
 				/
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="0">
+			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="0" Command="{Binding AddNumberCommand}" CommandParameter="4">
 				4
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="1">
+			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="1" Command="{Binding AddNumberCommand}" CommandParameter="5">
 				5
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="2">
+			<Button Classes="btnGreen" Grid.Row="2" Grid.Column="2" Command="{Binding AddNumberCommand}" CommandParameter="6">
 				6
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="2" Grid.Column="3">
+			<Button Classes="btnTemp" Grid.Row="2" Grid.Column="3" Command="{Binding AddNumberCommand}" CommandParameter="+">
 				+
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="2" Grid.Column="4">
+			<Button Classes="btnTemp" Grid.Row="2" Grid.Column="4" Command="{Binding AddNumberCommand}" CommandParameter="-">
 				-
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="0" Command="{Binding AddNumberCommand}">
-				<Button.CommandParameter>
-					<sys:Int32>1</sys:Int32>
-				</Button.CommandParameter>
+			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="0" Command="{Binding AddNumberCommand}" CommandParameter="1">
 				1
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="1" Command="{Binding AddNumberCommand}">
+			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="1" Command="{Binding AddNumberCommand}" CommandParameter="2">
 				2
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="2" Command="{Binding AddNumberCommand}">
+			<Button Classes="btnGreen" Grid.Row="3" Grid.Column="2" Command="{Binding AddNumberCommand}" CommandParameter="3">
 				3
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="3" Grid.Column="3">
+			<Button Classes="btnTemp" Grid.Row="3" Grid.Column="3" Command="{Binding AddNumberCommand}" CommandParameter="sqrt">
 				sqrt
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="3" Grid.Column="4">
+			<Button Classes="btnTemp" Grid.Row="3" Grid.Column="4" Command="{Binding AddNumberCommand}" CommandParameter="^">
 				^
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="100">
+			<Button Classes="btnGreen" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="100" Command="{Binding AddNumberCommand}" CommandParameter="0">
 				0
 			</Button>
 
-			<Button Classes="btnGreen" Grid.Row="4" Grid.Column="2">
+			<Button Classes="btnGreen" Grid.Row="4" Grid.Column="2" Command="{Binding AddNumberCommand}" CommandParameter=".">
 				.
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="4" Grid.Column="3">
+			<Button Classes="btnTemp" Grid.Row="4" Grid.Column="3" Command="{Binding AddNumberCommand}" CommandParameter="mod">
 				mod
 			</Button>
 

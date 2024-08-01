@@ -9,28 +9,30 @@ public class BaseCalculateViewModel : ViewModelBase
 {
     private string _displayStr = "0";
 
-    public ReactiveCommand<int, Unit> AddNumberCommand { get; }
-    public ReactiveCommand<string, Unit> RemoveLastNumberCommand { get; }
+    public ReactiveCommand<string, Unit> AddNumberCommand { get; }
+    public ReactiveCommand<string, Unit> RemoveLastCharCommand { get; }
+    public ReactiveCommand<Unit, Unit> RemoveAllStrCommand { get; }
 
     public BaseCalculateViewModel()
     {
-        AddNumberCommand = ReactiveCommand.Create<int>(AddNumber);
-        RemoveLastNumberCommand = ReactiveCommand.Create<string>(RemoveLastNumber);
+        AddNumberCommand = ReactiveCommand.Create<string>(AddNumber);
+        RemoveLastCharCommand = ReactiveCommand.Create<string>(RemoveLastChar);
+        RemoveAllStrCommand = ReactiveCommand.Create(RemoveAllStr);
     }
 
-    private void AddNumber(int value)
+    private void AddNumber(string value)
     {
-        switch(value)
-        {
-            case 1:
-                ShownValue += "1";
-                break;
-        }
+        ShownValue += value;
     }
 
-    public void RemoveLastNumber(string value)
+    public void RemoveLastChar(string value)
     {
-        ShownValue = ShownValue;
+        ShownValue = ShownValue.Remove((ShownValue.Length - 1), 1);
+    }    
+    
+    public void RemoveAllStr()
+    {
+        ShownValue = "0";
     }
 
     public string ShownValue
