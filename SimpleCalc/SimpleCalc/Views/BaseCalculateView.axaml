@@ -117,7 +117,7 @@
 				mod
 			</Button>
 
-			<Button Classes="btnTemp" Grid.Row="4" Grid.Column="4">
+			<Button Classes="btnTemp" Grid.Row="4" Grid.Column="4" Command="{Binding CalculateCommand}">
 				=
 			</Button>
 		</Grid>

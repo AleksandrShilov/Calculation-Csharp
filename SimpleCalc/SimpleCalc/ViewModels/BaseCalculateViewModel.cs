@@ -1,4 +1,5 @@
 using ReactiveUI;
+using System;
 using System.Reactive;
 
 namespace SimpleCalc.ViewModels;
@@ -11,12 +12,20 @@ public class BaseCalculateViewModel : ViewModelBase
     public ReactiveCommand<string, Unit> AddCharCommand { get; }
     public ReactiveCommand<string, Unit> RemoveLastCharCommand { get; }
     public ReactiveCommand<Unit, Unit> RemoveAllStrCommand { get; }
+    public ReactiveCommand<Unit, Unit> CalculateCommand { get; }
 
     public BaseCalculateViewModel()
     {
         AddCharCommand = ReactiveCommand.Create<string>(AddChar);
         RemoveLastCharCommand = ReactiveCommand.Create<string>(RemoveLastChar);
         RemoveAllStrCommand = ReactiveCommand.Create(RemoveAllStr);
+        CalculateCommand = ReactiveCommand.Create(Calculate);
+    }
+
+    private void Calculate()
+    {
+        var mmm = new Models();
+        ShownValue = Convert.ToString(mmm.AddTemp());
     }
 
     private void AddChar(string value)
