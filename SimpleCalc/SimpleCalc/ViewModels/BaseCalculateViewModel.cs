@@ -1,5 +1,4 @@
 using ReactiveUI;
-using System;
 using System.Reactive;
 
 namespace SimpleCalc.ViewModels;
@@ -9,25 +8,31 @@ public class BaseCalculateViewModel : ViewModelBase
 {
     private string _displayStr = "0";
 
-    public ReactiveCommand<string, Unit> AddNumberCommand { get; }
+    public ReactiveCommand<string, Unit> AddCharCommand { get; }
     public ReactiveCommand<string, Unit> RemoveLastCharCommand { get; }
     public ReactiveCommand<Unit, Unit> RemoveAllStrCommand { get; }
 
     public BaseCalculateViewModel()
     {
-        AddNumberCommand = ReactiveCommand.Create<string>(AddNumber);
+        AddCharCommand = ReactiveCommand.Create<string>(AddChar);
         RemoveLastCharCommand = ReactiveCommand.Create<string>(RemoveLastChar);
         RemoveAllStrCommand = ReactiveCommand.Create(RemoveAllStr);
     }
 
-    private void AddNumber(string value)
+    private void AddChar(string value)
     {
-        ShownValue += value;
+        if (ShownValue.Length == 1 && ShownValue.Equals("0") && int.TryParse(value, out _))
+            ShownValue = value;
+        else
+            ShownValue += value;
     }
 
     public void RemoveLastChar(string value)
     {
-        ShownValue = ShownValue.Remove((ShownValue.Length - 1), 1);
+        if (ShownValue.Length == 1)
+            ShownValue = "0";
+        else if (ShownValue.Length > 1)
+            ShownValue = ShownValue.Remove((ShownValue.Length - 1), 1);
     }    
     
     public void RemoveAllStr()
