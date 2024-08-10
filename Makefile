@@ -8,7 +8,7 @@ CFLAGSFORLIB = -shared -o
 ifeq ($(OS),Windows_NT)
 STD = clang++ --std=c++17
 TESTCOVERAGE = 
-WASH=del *.o *.a *.exe
+WASH=del *.o *.a *.exe 
 
 # Путь к файлу решения или проекту Avalonia
 SOLUTION_FILE := SimpleCalc\SimpleCalc.sln
@@ -19,7 +19,7 @@ CONFIGURATION := Debug
 # Папка для сборки для Windows
 BUILD_DIR := CalcWrapper\build
 
-SRC_DIR := CalcWrapper\build\CalcWrapper
+SRC_DIR := CalcWrapper\build\CalcWrapper\Release
 DEST_DIR1 := SimpleCalc\SimpleCalc\bin\x64\Debug\net7.0
 DEST_DIR2 := SimpleCalc\SimpleCalc.Desktop\bin\x64\Debug\net7.0
 
@@ -50,28 +50,28 @@ endif
 # MinGW Makefiles ..
 buildCmakeWind:
 	mkdir $(BUILD_DIR)
-	@cd $(BUILD_DIR) && cmake -G "MinGW Makefiles" ..
-	@cd $(BUILD_DIR) && mingw32-make
+	@cd $(BUILD_DIR) && cmake -G "Visual Studio 17 2022" ..
+	@cmake --build $(BUILD_DIR) --config Release
 
 # для Windows
 copyFiles: copyFilesSimpleCalc copyFilesSimpleCalcDesktop
 
 # для Windows (возможно для Linux придется поменять название dll)
 copyFilesSimpleCalc:
-	@xcopy /y /i $(SRC_DIR)\libCalcWrapper.dll $(DEST_DIR1)\
+	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll $(DEST_DIR1)\
 
 # для Windows
 copyFilesSimpleCalcDesktop:
-	@xcopy /y /i $(SRC_DIR)\libCalcWrapper.dll $(DEST_DIR2)\
-
+	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll $(DEST_DIR2)\
 
 # для Windows
 buildAvalonia:
 	@dotnet build $(SOLUTION_FILE) -c $(CONFIGURATION)
 
 # Публикация проекта Avalonia
-createExeAvalonia: buildCmakeWind copyFiles
+createExeAvalonia: buildCmakeWind
 	@dotnet publish $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
+	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll publish
 
 
 

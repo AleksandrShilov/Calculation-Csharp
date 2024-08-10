@@ -1,5 +1,0 @@
-D:/Projects/Calculation C#/Calculation-C-/CalcWrapper/build/CMakeFiles/edit_cache.dir
-D:/Projects/Calculation C#/Calculation-C-/CalcWrapper/build/CMakeFiles/rebuild_cache.dir
-D:/Projects/Calculation C#/Calculation-C-/CalcWrapper/build/CalcWrapper/CMakeFiles/CalcWrapper.dir
-D:/Projects/Calculation C#/Calculation-C-/CalcWrapper/build/CalcWrapper/CMakeFiles/edit_cache.dir
-D:/Projects/Calculation C#/Calculation-C-/CalcWrapper/build/CalcWrapper/CMakeFiles/rebuild_cache.dir
