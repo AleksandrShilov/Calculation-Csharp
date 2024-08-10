@@ -1,0 +1,9 @@
+# ninja log v5
+70	959	7449910754160194	CalcWrapper/CMakeFiles/CalcWrapper.dir/Model/validate.cpp.obj	78ed1940b756af68
+58	973	7449910754438981	CalcWrapper/CMakeFiles/CalcWrapper.dir/Model/parse.cpp.obj	ef6d3201334046d1
+32	1021	7449910754831314	CalcWrapper/CMakeFiles/CalcWrapper.dir/Model/calculate.cpp.obj	3543788e0499b541
+44	1075	7449910755432707	CalcWrapper/CMakeFiles/CalcWrapper.dir/Model/calculatedeposit.cpp.obj	5d0ab565d35ee565
+22	1076	7449910755432707	CalcWrapper/CMakeFiles/CalcWrapper.dir/Model/rpn.cpp.obj	5d7c33ee1def70cf
+7	1149	7449910756154914	CalcWrapper/CMakeFiles/CalcWrapper.dir/CalcWrapper.cpp.obj	c0b9db3da995f74c
+1149	1796	7449910762408896	CalcWrapper/CalcWrapper.dll	71eb3353695e32ce
+1149	1796	7449910762408896	CalcWrapper/CalcWrapper.lib	71eb3353695e32ce

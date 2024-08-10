@@ -3,14 +3,33 @@ CPP = --suppress=missingIncludeSystem --suppress=unmatchedSuppression --suppress
 NAMELIB = calc.dll
 CFLAGSFORLIB = -shared -o
 
+
+
 ifeq ($(OS),Windows_NT)
 STD = clang++ --std=c++17
 TESTCOVERAGE = 
 WASH=del *.o *.a *.exe
+
+# Путь к файлу решения или проекту Avalonia
+SOLUTION_FILE := SimpleCalc\SimpleCalc.sln
+
+# Конфигурация сборки Avalonia (Debug или Release)
+CONFIGURATION := Debug
+
+# Папка для сборки для Windows
+BUILD_DIR := CalcWrapper\build
+
+SRC_DIR := CalcWrapper\build\CalcWrapper
+DEST_DIR1 := SimpleCalc\SimpleCalc\bin\x64\Debug\net7.0
+DEST_DIR2 := SimpleCalc\SimpleCalc.Desktop\bin\x64\Debug\net7.0
+
 else
 STD = g++ --std=c++17
 TESTCOVERAGE = -fprofile-arcs -ftest-coverage
 WASH=rm -rf *.o *.a *.out *.log *.aux *.dvi *.toc *css *gcno *gcda CPPLINT.cfg *tgz *.html man_ru report .clang-format
+
+# Папка для сборки
+BUILD_DIR := CalcWrapper/build
 endif
 
 
@@ -26,14 +45,35 @@ else
 	TEST =  -lgtest -fsanitize=address --coverage
 endif
 
+# сборка для Windows
+# Visual Studio 16 2019 -A x64 "D:\Projects\Calculation C#\Calculation-C-\CalcWrapper"
+# MinGW Makefiles ..
+buildCmakeWind:
+	mkdir $(BUILD_DIR)
+	@cd $(BUILD_DIR) && cmake -G "MinGW Makefiles" ..
+	@cd $(BUILD_DIR) && mingw32-make
 
-libdll: parse.o validate.o calculate.o rpn.o calculatedeposit.o
-	$(STD) $(CFLAGSFORLIB) $(NAMELIB) $^
+# для Windows
+copyFiles: copyFilesSimpleCalc copyFilesSimpleCalcDesktop
+
+# для Windows (возможно для Linux придется поменять название dll)
+copyFilesSimpleCalc:
+	@xcopy /y /i $(SRC_DIR)\libCalcWrapper.dll $(DEST_DIR1)\
+
+# для Windows
+copyFilesSimpleCalcDesktop:
+	@xcopy /y /i $(SRC_DIR)\libCalcWrapper.dll $(DEST_DIR2)\
 
 
-win: parse.o validate.o calculate.o rpn.o calculatedeposit.o
-	$(STD) main.cpp $^ -o main.exe
-	./main.exe
+# для Windows
+buildAvalonia:
+	@dotnet build $(SOLUTION_FILE) -c $(CONFIGURATION)
+
+# Публикация проекта Avalonia
+createExeAvalonia: buildCmakeWind copyFiles
+	@dotnet publish $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
+
+
 
 all: clean install
 

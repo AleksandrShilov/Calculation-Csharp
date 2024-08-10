@@ -1,13 +1,15 @@
-﻿using System;
-//using ClassLibrary1;
+﻿using System.Runtime.InteropServices;
 
 namespace SimpleCalc.ViewModels;
 
 class Models
 {
-    public int AddTemp()
+    //[DllImport("libCalcWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("CMakeProject1.dll", CallingConvention = CallingConvention.Cdecl)]
+    public static extern double CalculateValue(string temp, double x);
+
+    public double GetResult(string calcStr, double x)
     {
-        return 1;
-        //return Class1.Add(2, 3);
+        return CalculateValue(calcStr, x);
     }
 }

@@ -24,8 +24,10 @@ public class BaseCalculateViewModel : ViewModelBase
 
     private void Calculate()
     {
-        var mmm = new Models();
-        ShownValue = Convert.ToString(mmm.AddTemp());
+        double x = 0;
+        var model = new Models();
+
+        ShownValue = Convert.ToString(model.GetResult(_displayStr, x));
     }
 
     private void AddChar(string value)

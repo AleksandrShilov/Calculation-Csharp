@@ -33,14 +33,6 @@
 
 
   <ItemGroup>
-    <Reference Include="ClassLibrary1">
-      <HintPath>..\..\..\ClassLibrary1\x64\Debug\ClassLibrary1.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-
-
-  <ItemGroup>
     <AvaloniaResource Update="Assets\Icons.axaml">
       <SubType>Designer</SubType>
     </AvaloniaResource>
