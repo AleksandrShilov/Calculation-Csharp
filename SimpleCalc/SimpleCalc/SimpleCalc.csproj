@@ -5,16 +5,19 @@
     <LangVersion>latest</LangVersion>
     <PlatformTarget>x64</PlatformTarget>
     <Platforms>AnyCPU;x64</Platforms>
+    <RuntimeIdentifiers>win-x64; linux-x64; osx-x64</RuntimeIdentifiers>
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
+
    <!-- Условие для Windows -->
-   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+   <PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('win'))">
 	   <DefineConstants>WIN</DefineConstants>
    </PropertyGroup>
 
    <!-- Условие для macOS -->
    <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' ">
-	   <DefineConstants>OSX</DefineConstants>
+     <DefineConstants>OSX</DefineConstants>
    </PropertyGroup>
 
    <!-- Условие для Linux -->

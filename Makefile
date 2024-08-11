@@ -40,7 +40,7 @@ SOLUTION_FILE := SimpleCalc/SimpleCalc.sln
 SRC_DIR := CalcWrapper/build/CalcWrapper
 DEST_DIR1 := SimpleCalc/SimpleCalc/bin/x64/Debug/net7.0
 DEST_DIR2 := SimpleCalc/SimpleCalc.Desktop/bin/x64/Debug/net7.0
-COPY = cp $(SRC_DIR)/libCalcWrapper.so publish
+COPY = cp $(SRC_DIR)/libCalcWrapper.so SimpleCalc/SimpleCalc.Desktop/bin/Debug/net7.0/linux-x64
 NAME_DLL = libCalcWrapper.so
 
 # Папка для сборки
@@ -83,9 +83,14 @@ copyFilesSimpleCalcDesktop:
 buildAvalonia:
 	@dotnet build $(SOLUTION_FILE) -c $(CONFIGURATION)
 
-# Публикация проекта Avalonia
+# Публикация проекта Avalonia Linux
 createExeAvalonia: buildCmakeWind
-	@dotnet publish $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
+	@dotnet publish -r linux-x64 $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
+	$(COPY)
+
+# Публикация проекта Avalonia Windows
+createExeAvalonia: buildCmakeWind
+	@dotnet publish -r win-x64 $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
 	$(COPY)
 
 
