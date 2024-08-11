@@ -7,6 +7,7 @@ CFLAGSFORLIB = -shared -o
 
 ifeq ($(OS),Windows_NT)
 STD = clang++ --std=c++17
+CMAKE = cmake -G "Visual Studio 17 2022" ..
 TESTCOVERAGE = 
 WASH=del *.o *.a *.exe 
 
@@ -23,10 +24,20 @@ SRC_DIR := CalcWrapper\build\CalcWrapper\Release
 DEST_DIR1 := SimpleCalc\SimpleCalc\bin\x64\Debug\net7.0
 DEST_DIR2 := SimpleCalc\SimpleCalc.Desktop\bin\x64\Debug\net7.0
 
+COPY= xcopy /y /i $(SRC_DIR)\CalcWrapper.dll publish
+NAME_DLL = CalcWrapper.dll
+
 else
 STD = g++ --std=c++17
+CMAKE = cmake ..
 TESTCOVERAGE = -fprofile-arcs -ftest-coverage
 WASH=rm -rf *.o *.a *.out *.log *.aux *.dvi *.toc *css *gcno *gcda CPPLINT.cfg *tgz *.html man_ru report .clang-format
+
+SRC_DIR := CalcWrapper/build/CalcWrapper/Release
+DEST_DIR1 := SimpleCalc/SimpleCalc/bin/x64/Debug/net7.0
+DEST_DIR2 := SimpleCalc/SimpleCalc.Desktop/bin/x64/Debug/net7.0
+COPY = cp $(SRC_DIR)/CalcWrapper.dll publish
+NAME_DLL = libCalcWrapper.so
 
 # Папка для сборки
 BUILD_DIR := CalcWrapper/build
@@ -50,7 +61,7 @@ endif
 # MinGW Makefiles ..
 buildCmakeWind:
 	mkdir $(BUILD_DIR)
-	@cd $(BUILD_DIR) && cmake -G "Visual Studio 17 2022" ..
+	@cd $(BUILD_DIR) && $(CMAKE)
 	@cmake --build $(BUILD_DIR) --config Release
 
 # для Windows
@@ -58,20 +69,20 @@ copyFiles: copyFilesSimpleCalc copyFilesSimpleCalcDesktop
 
 # для Windows (возможно для Linux придется поменять название dll)
 copyFilesSimpleCalc:
-	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll $(DEST_DIR1)\
+	@xcopy /y /i $(SRC_DIR)\$(NAME_DLL) $(DEST_DIR1)\
 
-# для Windows
+# для Windows *
 copyFilesSimpleCalcDesktop:
-	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll $(DEST_DIR2)\
+	@xcopy /y /i $(SRC_DIR)\$(NAME_DLL) $(DEST_DIR2)\
 
-# для Windows
+# для Windows *
 buildAvalonia:
 	@dotnet build $(SOLUTION_FILE) -c $(CONFIGURATION)
 
 # Публикация проекта Avalonia
 createExeAvalonia: buildCmakeWind
 	@dotnet publish $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
-	@xcopy /y /i $(SRC_DIR)\CalcWrapper.dll publish
+	$(COPY)
 
 
 
