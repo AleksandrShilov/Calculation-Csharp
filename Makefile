@@ -1,114 +1,83 @@
-
 CPP = --suppress=missingIncludeSystem --suppress=unmatchedSuppression --suppress=unusedFunction --suppress=useStlAlgorithm
-NAMELIB = calc.dll
-CFLAGSFORLIB = -shared -o
 
 # Конфигурация сборки Avalonia (Debug или Release)
 CONFIGURATION := Debug
 
-
 ifeq ($(OS),Windows_NT)
 STD = clang++ --std=c++17
-CMAKE = cmake -G "Visual Studio 17 2022" ..
-TESTCOVERAGE = 
-WASH=del *.o *.a *.exe 
 
-# Путь к файлу решения или проекту Avalonia
+# Visual Studio 16 2019 -A x64 "D:\Projects\Calculation C#\Calculation-C-\CalcWrapper"
+# MinGW Makefiles ..
+CMAKE = cmake -G "Visual Studio 17 2022" ..
+
+TESTCOVERAGE = 
+
+WASH=del -recurse *.o *.a *.exe CalcWrapper\build publish
+
+# Путь к файлу решения Avalonia
 SOLUTION_FILE := SimpleCalc\SimpleCalc.sln
 
-
-# Папка для сборки для Windows
+# Папка для сборки
 BUILD_DIR := CalcWrapper\build
 
 SRC_DIR := CalcWrapper\build\CalcWrapper\Release
-DEST_DIR1 := SimpleCalc\SimpleCalc\bin\x64\Debug\net7.0
-DEST_DIR2 := SimpleCalc\SimpleCalc.Desktop\bin\x64\Debug\net7.0
 
 COPY= xcopy /y /i $(SRC_DIR)\CalcWrapper.dll publish
+
 NAME_DLL = CalcWrapper.dll
 
-else
+else # Linux
 STD = g++ --std=c++17
+
 CMAKE = cmake ..
+
 TESTCOVERAGE = -fprofile-arcs -ftest-coverage
-WASH=rm -rf *.o *.a *.out *.log *.aux *.dvi *.toc *css *gcno *gcda CPPLINT.cfg *tgz *.html man_ru report .clang-format
 
-# Путь к файлу решения или проекту Avalonia
+WASH=rm -rf *.o *.a *.out *.log *.aux *.dvi *.toc *css *gcno *gcda CPPLINT.cfg *tgz *.html man_ru report .clang-format CalcWrapper\build publish
+
+# Путь к файлу решения Avalonia
 SOLUTION_FILE := SimpleCalc/SimpleCalc.sln
-
-#SRC_DIR := CalcWrapper/build/CalcWrapper/Release
-SRC_DIR := CalcWrapper/build/CalcWrapper
-DEST_DIR1 := SimpleCalc/SimpleCalc/bin/x64/Debug/net7.0
-DEST_DIR2 := SimpleCalc/SimpleCalc.Desktop/bin/x64/Debug/net7.0
-COPY = cp $(SRC_DIR)/libCalcWrapper.so SimpleCalc/SimpleCalc.Desktop/bin/Debug/net7.0/linux-x64
-NAME_DLL = libCalcWrapper.so
 
 # Папка для сборки
 BUILD_DIR := CalcWrapper/build
+
+SRC_DIR := CalcWrapper/build/CalcWrapper
+
+COPY = cp $(SRC_DIR)/libCalcWrapper.so SimpleCalc/SimpleCalc.Desktop/bin/Debug/net7.0/linux-x64
+
+NAME_DLL = libCalcWrapper.so
+
+LEAKS=CK_FORK=no valgrind --leak-check=full --track-origins=yes -s
+
+TEST =  -lgtest --coverage
+
+# MACOS
+#LEAKS=CK_FORK=no leaks --atExit --
+#TEST =  -lgtest -fsanitize=address --coverage
 endif
 
-
-OS=$(shell uname)
-
-ifeq ($(OS), Linux)
-	LEAKS=CK_FORK=no valgrind --leak-check=full --track-origins=yes -s
-	TEST =  -lgtest --coverage
-else ifeq ($(OS),Windows_NT)
-
-else
-	LEAKS=CK_FORK=no leaks --atExit --
-	TEST =  -lgtest -fsanitize=address --coverage
-endif
-
-# сборка для Windows
-# Visual Studio 16 2019 -A x64 "D:\Projects\Calculation C#\Calculation-C-\CalcWrapper"
-# MinGW Makefiles ..
-buildCmakeWind:
+# Avalonia
+buildCmake:
 	mkdir $(BUILD_DIR)
 	@cd $(BUILD_DIR) && $(CMAKE)
 	@cmake --build $(BUILD_DIR) --config Release
 
-# для Windows
-copyFiles: copyFilesSimpleCalc copyFilesSimpleCalcDesktop
-
-# для Windows (возможно для Linux придется поменять название dll)
-copyFilesSimpleCalc:
-	@xcopy /y /i $(SRC_DIR)\$(NAME_DLL) $(DEST_DIR1)\
-
-# для Windows *
-copyFilesSimpleCalcDesktop:
-	@xcopy /y /i $(SRC_DIR)\$(NAME_DLL) $(DEST_DIR2)\
-
-# для Windows *
 buildAvalonia:
 	@dotnet build $(SOLUTION_FILE) -c $(CONFIGURATION)
 
-# Публикация проекта Avalonia Linux
-createExeAvalonia: buildCmakeWind
+# Установка проекта Avalonia Linux
+installLinux: buildCmake
 	@dotnet publish -r linux-x64 $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
 	$(COPY)
 
-# Публикация проекта Avalonia Windows
-createExeAvalonia: buildCmakeWind
+# Установка проекта Avalonia Windows
+installWindows: buildCmake
 	@dotnet publish -r win-x64 $(SOLUTION_FILE) -c $(CONFIGURATION) -o publish
 	$(COPY)
 
 
-
+# C++ core
 all: clean install
-
-
-install: build clean
-
-
-build:
-	mkdir build
-	cd build; cmake ..
-	make -C build
-
-
-uninstall:
-	rm -rf build
 
 
 dvi:
