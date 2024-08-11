@@ -3,6 +3,8 @@ CPP = --suppress=missingIncludeSystem --suppress=unmatchedSuppression --suppress
 NAMELIB = calc.dll
 CFLAGSFORLIB = -shared -o
 
+# Конфигурация сборки Avalonia (Debug или Release)
+CONFIGURATION := Debug
 
 
 ifeq ($(OS),Windows_NT)
@@ -14,8 +16,6 @@ WASH=del *.o *.a *.exe
 # Путь к файлу решения или проекту Avalonia
 SOLUTION_FILE := SimpleCalc\SimpleCalc.sln
 
-# Конфигурация сборки Avalonia (Debug или Release)
-CONFIGURATION := Debug
 
 # Папка для сборки для Windows
 BUILD_DIR := CalcWrapper\build
@@ -33,10 +33,14 @@ CMAKE = cmake ..
 TESTCOVERAGE = -fprofile-arcs -ftest-coverage
 WASH=rm -rf *.o *.a *.out *.log *.aux *.dvi *.toc *css *gcno *gcda CPPLINT.cfg *tgz *.html man_ru report .clang-format
 
-SRC_DIR := CalcWrapper/build/CalcWrapper/Release
+# Путь к файлу решения или проекту Avalonia
+SOLUTION_FILE := SimpleCalc/SimpleCalc.sln
+
+#SRC_DIR := CalcWrapper/build/CalcWrapper/Release
+SRC_DIR := CalcWrapper/build/CalcWrapper
 DEST_DIR1 := SimpleCalc/SimpleCalc/bin/x64/Debug/net7.0
 DEST_DIR2 := SimpleCalc/SimpleCalc.Desktop/bin/x64/Debug/net7.0
-COPY = cp $(SRC_DIR)/CalcWrapper.dll publish
+COPY = cp $(SRC_DIR)/libCalcWrapper.so publish
 NAME_DLL = libCalcWrapper.so
 
 # Папка для сборки
