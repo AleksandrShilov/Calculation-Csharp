@@ -7,6 +7,21 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+   <!-- Условие для Windows -->
+   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+	   <DefineConstants>WIN</DefineConstants>
+   </PropertyGroup>
+
+   <!-- Условие для macOS -->
+   <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64' ">
+	   <DefineConstants>OSX</DefineConstants>
+   </PropertyGroup>
+
+   <!-- Условие для Linux -->
+   <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'linux-x64' ">
+	   <DefineConstants>LINUX</DefineConstants>
+   </PropertyGroup>
+
   
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />

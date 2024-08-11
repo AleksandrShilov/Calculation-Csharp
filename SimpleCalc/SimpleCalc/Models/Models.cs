@@ -4,12 +4,12 @@ namespace SimpleCalc.ViewModels;
 
 class Models
 {
-    private const string LIBRARY_NAME = "CalcWrapper.dll";
-
     #if LINUX
-            LIBRARY_NAME = "libCalcWrapper.so";
+            private const string LIBRARY_NAME = "libCalcWrapper.so";
     #elif OSX
-            LIBRARY_NAME = "libCalcWrapper.dylib";
+            private const string LIBRARY_NAME = "libCalcWrapper.dylib";
+    #elif WIN
+            private const string LIBRARY_NAME = "CalcWrapper.dll";
     #endif
 
     [DllImport(LIBRARY_NAME, CallingConvention = CallingConvention.Cdecl)]
