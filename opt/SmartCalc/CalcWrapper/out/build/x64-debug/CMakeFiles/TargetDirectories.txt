@@ -1,0 +1,5 @@
+D:/Projects/CalcC#/CalcWrapper/out/build/x64-debug/CMakeFiles/edit_cache.dir
+D:/Projects/CalcC#/CalcWrapper/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+D:/Projects/CalcC#/CalcWrapper/out/build/x64-debug/CalcWrapper/CMakeFiles/CalcWrapper.dir
+D:/Projects/CalcC#/CalcWrapper/out/build/x64-debug/CalcWrapper/CMakeFiles/edit_cache.dir
+D:/Projects/CalcC#/CalcWrapper/out/build/x64-debug/CalcWrapper/CMakeFiles/rebuild_cache.dir

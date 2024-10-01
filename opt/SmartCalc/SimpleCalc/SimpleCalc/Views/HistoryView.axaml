@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:SimpleCalc.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 Height="200"
+			 MinHeight="200"
+             x:Class="SimpleCalc.Views.HistoryView">
+
+
+	<Grid RowDefinitions="2*, *" ColumnDefinitions="*, *" Classes="history">
+		<Border  Grid.Row="0"  Grid.ColumnSpan="2" Background="#FFEEEEEE" BorderBrush="Black" BorderThickness="1">
+		
+			<!-- History Calc -->
+			<Border Classes="Display">
+				<ScrollViewer Grid.Row="1" Classes="HistoryScroll">
+					<ListBox ItemsSource="{Binding HistoryItems}" SelectedItem="{Binding SelectedItem}" Classes="HistoryListBox">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding}"
+								   Classes="HistoryTextBox"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</ScrollViewer>
+			</Border>
+		
+		</Border>
+
+		<Button Grid.Row="1" Grid.Column="1" Content="Очистить историю" Command="{Binding ClearHistoryCommand}" Classes="btnHist"></Button>
+	
+	</Grid>
+	
+</UserControl>

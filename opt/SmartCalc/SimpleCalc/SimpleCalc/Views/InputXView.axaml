@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:SimpleCalc.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
+		Width="300" Height="90"
+		Icon="/Assets/avalonia-logo.ico"
+        x:Class="SimpleCalc.InputXView"
+        Title="Dialog">
+
+	<Window.DataContext>
+		<vm:InputXViewModel/>
+	</Window.DataContext>
+
+	<Window.Styles>
+		<StyleInclude Source="\Styles\Style.axaml"/>
+	</Window.Styles>
+
+	<StackPanel Margin="10">
+		<TextBox Text="{Binding InputText, Mode=TwoWay}" Watermark="Введите число" />
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+			<Button Content="ОК" Margin="5" Command="{Binding GetXCommand}" Classes="btnX" />
+			<Button Content="Отмена" Margin="5" Classes="btnX" />
+		</StackPanel>
+	</StackPanel>
+	
+</Window>

@@ -1,0 +1,108 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500"
+             Background="#FCF8E8"
+			 xmlns:vm="using:SimpleCalc.ViewModels"
+			 x:Class="SimpleCalc.Views.BaseCalcView">
+
+
+	<!-- Style -->
+	<UserControl.Styles>
+		<StyleInclude Source="\Styles\Style.axaml"/>
+	</UserControl.Styles>
+
+	<!-- Content -->
+	<Grid RowDefinitions="auto, auto, auto, *" Classes="MainGrid">
+
+		<!-- History Calc -->
+		<TextBox Grid.Row="1" TextAlignment="Right" FontSize="30" Text="{Binding ShownCalculateExpresion}" />
+
+		<!-- Display Calc -->
+		<TextBox Grid.Row="2" TextAlignment="Right" FontSize="30" Text="{Binding ShownValue}" />
+
+		<DockPanel  Grid.Row="3">
+
+			<!-- Button Grid -->
+			<Grid  RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*" Classes="BtnGrid">
+				
+				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="0"
+						Content="AC" Command="{Binding RemoveAllStr}" />
+
+				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="1"
+						Content="C" Command="{Binding RemoveLastCharCommand}" />
+
+				<Button Classes="btnSomon" Grid.Row="0" Grid.Column="2"
+						Content="X" Command="{Binding AddCharCommand}" CommandParameter="x" />
+
+				<Button Classes="btnOrang" Grid.Row="0" Grid.Column="3" 
+						Content="(" Command="{Binding AddCharCommand}" CommandParameter="(" />
+
+				<Button Classes="btnOrang" Grid.Row="0" Grid.Column="4"
+						Content=")" Command="{Binding AddCharCommand}" CommandParameter=")" />
+					
+				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="0" 
+						Content="7" Command="{Binding AddCharCommand}" CommandParameter="7" />
+
+				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="1"
+						Content="8" Command="{Binding AddCharCommand}" CommandParameter="8" />
+					
+				<Button Classes="btnGreen" Grid.Row="1" Grid.Column="2" 
+						Content="9" Command="{Binding AddCharCommand}" CommandParameter="9" />
+
+				<Button Classes="btnOrang" Grid.Row="1" Grid.Column="3"
+						Content="*" Command="{Binding AddCharCommand}" CommandParameter="*" />
+					
+				<Button Classes="btnOrang" Grid.Row="1" Grid.Column="4"
+						Content="/" Command="{Binding AddCharCommand}" CommandParameter="/" />
+					
+				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="0"
+						Content="4" Command="{Binding AddCharCommand}" CommandParameter="4" />
+					
+				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="1"
+						Content="5" Command="{Binding AddCharCommand}" CommandParameter="5" />
+
+				<Button Classes="btnGreen" Grid.Row="2" Grid.Column="2"
+						Content="6" Command="{Binding AddCharCommand}" CommandParameter="6" />
+
+				<Button Classes="btnOrang" Grid.Row="2" Grid.Column="3"
+						Content="+" Command="{Binding AddCharCommand}" CommandParameter="+" />
+
+				<Button Classes="btnOrang" Grid.Row="2" Grid.Column="4"
+						Content="-" Command="{Binding AddCharCommand}" CommandParameter="-" />
+					
+				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="0"
+						Content="1" Command="{Binding AddCharCommand}" CommandParameter="1" />
+					
+				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="1"
+						Content="2" Command="{Binding AddCharCommand}" CommandParameter="2" />
+					
+				<Button Classes="btnGreen" Grid.Row="3" Grid.Column="2"
+						Content="3" Command="{Binding AddCharCommand}" CommandParameter="3" />
+					
+				<Button Classes="btnOrang" Grid.Row="3" Grid.Column="3"
+						Content="sqrt" Command="{Binding AddCharCommand}" CommandParameter="sqrt(" />
+					
+				<Button Classes="btnOrang" Grid.Row="3" Grid.Column="4"
+						Content="^" Command="{Binding AddCharCommand}" CommandParameter="^" />
+					
+				<Button Classes="btnGreen" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" MinWidth="100"
+						Content="0" Command="{Binding AddCharCommand}" CommandParameter="0" />
+
+				<Button Classes="btnGreen" Grid.Row="4" Grid.Column="2"
+						Content="." Command="{Binding AddCharCommand}" CommandParameter="." />
+
+				<Button Classes="btnOrang" Grid.Row="4" Grid.Column="3"
+						Content="mod" Command="{Binding AddCharCommand}" CommandParameter="mod(" />
+
+				<Button Classes="btnOrang" Grid.Row="4" Grid.Column="4"
+						Content="=" Command="{Binding CalculateCommand}" />
+
+			</Grid>
+
+		</DockPanel >
+
+	</Grid>
+</UserControl>

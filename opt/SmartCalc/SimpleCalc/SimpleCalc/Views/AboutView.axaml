@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:SimpleCalc.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		Width="300" Height="300"
+        x:Class="SimpleCalc.AboutView"
+		Classes="AboutView"
+		Icon="/Assets/avalonia-logo.ico"
+        Title="О программе">
+
+	<Window.DataContext>
+		<vm:AboutViewModel/>
+	</Window.DataContext>
+
+	<Window.Styles>
+		<StyleInclude Source="\Styles\Style.axaml"/>
+	</Window.Styles>
+	
+	
+	<StackPanel Margin="10" >
+		<TextBlock Text="SmartCalc V_3.0" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+		<TextBlock TextWrapping="Wrap">
+			Это десктопный калькулятор, позволяющий выполнять все простые арифметические операции (сложение, вычитание, умножение, деление), а также вычислять значения тригонометрических функций (например, sin, cos, tan).
+		</TextBlock>
+		<TextBlock TextWrapping="Wrap" Margin="0,10,0,0">
+			Вы можете вводить числа и выполнять операции с помощью мыши или клавиатуры. В программе также предусмотрен режим построения графиков функций.
+		</TextBlock>
+		
+		<!-- Пока не сделан режим депозитного!
+		<TextBlock TextWrapping="Wrap" Margin="0,10,0,0">
+			Дополнительно доступны режимы депозитного и кредитного калькулятора для расчета начислений и платежей.
+		</TextBlock>
+		<Button Content="Закрыть" HorizontalAlignment="Right" Margin="0,10,0,0" Command="{Binding CloseCommand}"/>
+		-->
+		
+	</StackPanel>
+	
+</Window>

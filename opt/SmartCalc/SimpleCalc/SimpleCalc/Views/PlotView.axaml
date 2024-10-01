@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:liveCharts="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+		xmlns:vm="using:SimpleCalc.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		Width="800" Height="600"
+		MinWidth="800" MinHeight="600"
+        x:Class="SimpleCalc.Views.PlotView"
+		Classes="PlotView"
+		Icon="/Assets/avalonia-logo.ico"
+        Title="График">
+
+	<Window.DataContext>
+		<vm:PlotViewModel/>
+	</Window.DataContext>
+
+	<Window.Styles>
+		<StyleInclude Source="\Styles\Style.axaml"/>
+	</Window.Styles>
+	
+
+	<Grid RowDefinitions="450, *, *" Margin="10">
+		
+		<liveCharts:CartesianChart Series="{Binding Series}" Grid.Row="0"
+						   XAxes="{Binding XAxes}"
+						   YAxes="{Binding YAxes}">
+		</liveCharts:CartesianChart>
+
+		<StackPanel Margin="10" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+			
+			<!-- Row 0 -->
+			<DockPanel >
+				<TextBlock Width="45" Margin="10 5 5 0">X Min:</TextBlock>
+				<TextBox Width="150" Text="{Binding XMin, Mode=TwoWay}"/>
+
+				<TextBlock Width="45" Margin="15 5 5 0">Y Min:</TextBlock>
+				<TextBox Width="150" Text="{Binding YMin, Mode=TwoWay}"/>
+			</DockPanel>
+
+
+			<!-- Row 1 -->
+			<DockPanel Margin="0 10">
+				<TextBlock Width="45" Margin="10 5 5 0">X Max:</TextBlock>
+				<TextBox Width="150" Text="{Binding XMax, Mode=TwoWay}"/>
+
+				<TextBlock Width="45" Margin="15 5 5 0">Y Max:</TextBlock>
+				<TextBox Width="150" Text="{Binding YMax, Mode=TwoWay}"/>
+			</DockPanel>
+		</StackPanel>
+
+		<Button Grid.Row="2" HorizontalAlignment="Right" Classes="btnSomon" 
+				Content="Построить график" Command="{Binding BuildPlotCommand}"/>
+	</Grid>
+</Window>

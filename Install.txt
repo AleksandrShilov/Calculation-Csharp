@@ -1,0 +1,6 @@
+ dpkg-deb --build SmartCalc
+ 
+ dpkg -i SmartCalc.deb
+ 
+ run файл - выполнить chmod +x
+ после этого программа запуститься  

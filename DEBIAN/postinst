@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Path
+CURRENT_DIR=$(pwd)
+SOURCE_DIR="$CURRENT_DIR/opt/SmartCalc"
+
+echo "Start install"
+
+# Install depends
+if ! dotnet --list-sdks > /dev/null 2>&1; then
+    echo ".NET SDK не найдена, установка..."
+    
+    # Обновляем репозитории и устанавливаем .NET SDK 7.0
+    #sudo apt-get update
+    #sudo apt-get install -y dotnet-sdk-7.0
+else
+    echo ".NET SDK уже установлена."
+fi
+
+# Проверяем наличие gcc и cmake
+if ! command -v gcc &> /dev/null; then
+    echo "GCC не найден, установка..."
+    #apt-get install -y gcc
+else
+    echo "GCC уже установлен."
+fi
+
+if ! command -v cmake &> /dev/null; then
+    echo "CMake не найден, установка..."
+    #apt-get install -y cmake
+else
+    echo "CMake уже установлен."
+fi
+
+# Compile project
+cd "$SOURCE_DIR"
+make installLinux
+
+# Copy file
+chmod +x publish
+cp -r publish/ /usr/local/bin/
+
+# Take available
+chmod +x /usr/local/bin/publish
+
+echo "Successfully installed"

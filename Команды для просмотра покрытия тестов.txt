@@ -1,0 +1,3 @@
+dotnet test --collect:"XPlat Code Coverage"
+
+reportgenerator "-reports:D:\Projects\C#\APC2_SmartCalc_v3.0_Desktop_C_sharp-1\src\SimpleCalc\Unit-Tests\TestResults\492b9e82-9d1c-4371-b7c0-5d6110de4cc5\coverage.cobertura.xml" "-targetdir:coverage-report" "-reporttypes:Html"

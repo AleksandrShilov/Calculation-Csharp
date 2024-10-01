@@ -1,0 +1,98 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SimpleCalc.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:views="clr-namespace:SimpleCalc.Views"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="500"
+		Width="{Binding WindowWidth, Mode=TwoWay}" 
+		MinWidth="315" 
+		Height="395"
+		MinHeight="395"
+        x:Class="SimpleCalc.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="SimpleCalc">
+
+	<!-- Style -->
+	<Window.Styles>
+		<StyleInclude Source="\Styles\StyleMenu.axaml"/>
+	</Window.Styles>
+	
+
+	<Grid >
+		<DockPanel>
+
+			<!-- Меню -->
+			<Menu DockPanel.Dock="Top">
+				
+				<MenuItem Command="{Binding TriggerMenuCommand}">
+					<MenuItem.Header >
+						<StackPanel Orientation="Horizontal">
+							<PathIcon Width="20" Height="20" Data="{StaticResource LineHorizontalRegular}"/>
+						</StackPanel>
+					</MenuItem.Header>
+				</MenuItem>
+
+				<!--
+				<TextBlock Text="{Binding CurrentMode}" DockPanel.Dock="Left" />
+				-->
+				
+				<MenuItem Width="{Binding IndentationBtnHist}" IsEnabled="False" />
+				
+				<MenuItem Header="История" Command="{Binding ShowHistoryCommand}" DockPanel.Dock="Right" />
+							
+							<!-- Заглушка для иконки
+					<MenuItem.Header >
+						<StackPanel Orientation="Horizontal">
+							<PathIcon Width="20" Height="20" Data="{StaticResource HistoryIcon}"/>
+							<Image Width="20" Height="20" Source="/Assets/history.svg" />
+						</StackPanel>
+					</MenuItem.Header>
+				</MenuItem>
+							-->
+							
+			</Menu>
+
+			<!-- Режимы -->
+			<SplitView DockPanel.Dock="Left" IsPaneOpen="{Binding IsMenuOpen}" OpenPaneLength="200"
+					   DisplayMode="Overlay" Background="#FCF8E8">
+
+				<!-- Menu -->
+				<SplitView.Pane>
+					<StackPanel Spacing="5" Margin="5" >
+
+						<!-- Меню -->
+						<Button Command="{Binding IBaseCalculateDisplayCommand}" 
+								Content="Обычный" CommandParameter="Обычный" Classes="btnSomon" />
+
+						<Button Command="{Binding IBaseCalculateDisplayCommand}"
+								Content="Расширенный" CommandParameter="Расширенный" Classes="btnSomon" />
+
+						<Button Command="{Binding IDepositDisplayCommand}"
+								Content="Депозитный" Classes="btnSomon" />
+							
+						<Button Command="{Binding OpenPlotViewCommand}"
+								Content="График" Classes="btnSomon" />
+						
+						<Button Command="{Binding OpenAboutCommand}"
+								Content="Справка" Classes="btnSomon" />
+
+					</StackPanel>
+				</SplitView.Pane>
+
+
+				<!-- Элемент управления, наблюдающий за RoutingState -->
+				<reactiveUi:RoutedViewHost Router="{Binding Router}"/>
+			</SplitView>
+
+		</DockPanel>
+
+		<!-- История -->
+		<views:HistoryView VerticalAlignment="Bottom" Height="200" Background="LightGray"
+						   IsVisible="{Binding IsHistoryVisible}" Opacity="0.9"/>
+		
+	</Grid>
+	
+</Window>
+

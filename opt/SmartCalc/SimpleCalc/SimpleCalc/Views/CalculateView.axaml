@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+			 xmlns:views="clr-namespace:SimpleCalc.Views"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="500"
+             Background="#FCF8E8"
+			 xmlns:vm="using:SimpleCalc.ViewModels"
+			 x:Class="SimpleCalc.Views.BaseCalculateView">
+
+
+	<!-- Style -->
+	<UserControl.Styles>
+		<StyleInclude Source="\Styles\Style.axaml"/>
+	</UserControl.Styles>
+
+	<!-- Content -->
+	<Grid RowDefinitions="auto, auto, auto, *" Classes="MainGrid">
+
+		<!-- History Calc -->
+		<!-- 
+		<Border Classes="Display">
+			<ScrollViewer Grid.Row="1" Classes="HistoryScroll">
+				<ListBox ItemsSource="{Binding HistoryItems}" SelectedItem="{Binding SelectedItem}" Classes="HistoryListBox">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding}"
+                               Classes="HistoryTextBox"/>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</ScrollViewer>
+		</Border>
+		-->
+
+		<views:BaseCalcView IsVisible="{Binding IsBaseCalcVisible}" />
+		<views:ExtensionCalcView IsVisible="{Binding IsAdditionalBtnVisible}" />
+
+</Grid>
+</UserControl>
